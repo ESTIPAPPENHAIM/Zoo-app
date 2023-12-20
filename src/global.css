@@ -1,0 +1,135 @@
+body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color:#f7d794 ;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.app-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 600px;
+  width: 550px;
+}
+
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 90%;
+}
+
+.form-container > div{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.form-container > div > input{
+  margin: 5px;
+}
+
+.form-container > div > select{
+  margin: 10px;
+  width: 100px;
+  height: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #f5cd79;
+}
+
+.form-container > div > select:hover{
+  background-color: #303952;
+  color: #f5cd79;
+  cursor: pointer;
+} 
+.form-container > div > button{
+  margin: 10px;
+  height: 25px;
+  width: 60px;
+  color: #303952;
+  border: none;
+  background-color: #f5cd79;
+  border-radius: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-container > div > button:hover{
+  background-color: #303952;
+  color: #f5cd79;
+  cursor: pointer;
+}
+
+
+.form-container > span{
+  width: 100px;
+  margin-left: 20px;
+  text-align: center;
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  font-style: oblique;
+  color: #f5cd79;
+  animation-name: animal-span;
+  animation-duration: 10s;
+}
+
+@keyframes animal-span {
+  0%   {color: #303952;}
+  25%  { color: #f5cd79;}
+  50%  {color: #303952;}
+  100% { color: #f5cd79;}
+}
+
+.form-container > span:hover{
+  color: #303952;
+} 
+
+.table-container{
+  height: 60%;
+  width: 90%;
+  overflow-y: auto;
+
+}
+
+.thead-table-style tr,.thead-table-style th {
+  width: 20%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  color: #303952;
+}
+
+img{
+  width: 110px;
+  height: 70px;
+  border-radius: 5px;
+}
+
+tr > th > button{
+  width: 40px;
+  height: 20px;
+  border-radius: 25px;
+  border: none;
+  margin-right: 20px;
+  background-color: transparent;
+  color: #f5cd79;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+tr > th > button:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+
+
