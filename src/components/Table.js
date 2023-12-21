@@ -1,7 +1,11 @@
 import React from 'react'
 import Animal from './Animal'
+import { useViaAnimalContext, useDeleteAnimalContext } from '../context/zooContext'
 
-const Table = ({animal, deleteAnimal}) => {
+const Table = () => {
+
+  const animal = useViaAnimalContext();
+  const deleteAnimal = useDeleteAnimalContext();
 
   return (
     <div className='table-container'>
@@ -15,9 +19,7 @@ const Table = ({animal, deleteAnimal}) => {
     </tr>
 </thead>
 <tbody>
-{animal.map((animal) =>(
-<Animal key={animal.id} animal={animal} deleteAnimal={deleteAnimal}/>
-  ))}
+<Animal/>
  </tbody>
         </table>
     </div>

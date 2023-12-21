@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Select = ({animal, handelAnimalTypeChange}) => {
+const Select = ({handelAnimalTypeChange}) => {
   return (
     <select onChange={handelAnimalTypeChange}>
     <option value=''>Animal Type</option>

@@ -1,7 +1,14 @@
 import React, {useState} from 'react'
 import Select from './Select'
+import { useAddAnimalContext } from '../context/zooContext';
 
-const Form = ({addAnimalToAnimalList}) => {
+
+
+const Form = () => {
+
+  const addAnimalToAnimalList = useAddAnimalContext();
+
+ 
 
   const [animal, setAnimal] = useState({ 
       name: "",
@@ -10,7 +17,8 @@ const Form = ({addAnimalToAnimalList}) => {
       imageSrc: "",
   });
 
-   const handelAnimalNameChange = (event) =>{
+
+  const handelAnimalNameChange = (event) =>{
     setAnimal({...animal, name: event.target.value});
    }
    const handelAnimalImageSrcChange = (event) =>{
@@ -26,19 +34,20 @@ const Form = ({addAnimalToAnimalList}) => {
    const addAnimal = (event) => {
     event.preventDefault(); 
     addAnimalToAnimalList(animal);
-    setAnimal({name: "", type: '', age: 0, imageSrc: "",})
+    setAnimal({name: "", type: "", age: 0, imageSrc: "",})
+
    }
 
 
   return (
     <form onSubmit={addAnimal} className='form-container'>
       <div>
-     <input name={animal.name} onChange={handelAnimalNameChange} type='text' placeholder='Enter Animal Name'/>
-     <input name={animal.imageSrc} onChange={handelAnimalImageSrcChange} type='text' placeholder='Enter Image src'/>
-     <input name={animal.age} onChange={handelAnimalAgeChange} type='number' min={0}/>
+     <input value={animal.name} onChange={handelAnimalNameChange} type='text' placeholder='Enter Animal Name'/>
+     <input value={animal.imageSrc} onChange={handelAnimalImageSrcChange} type='text' placeholder='Enter Image src'/>
+     <input value={animal.age} onChange={handelAnimalAgeChange} type='number' min={0}/>
      </div>
      <div>
-     <Select name={animal} animal={animal} handelAnimalTypeChange={handelAnimalTypeChange}/>
+     <Select handelAnimalTypeChange={handelAnimalTypeChange}/>
      <button type='submit'>Add</button>
      </div>
      <span>add animal to the zoo</span>
