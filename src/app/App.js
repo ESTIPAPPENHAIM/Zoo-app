@@ -2,18 +2,18 @@ import React from 'react'
 import Form from '../components/Form'
 import Table from '../components/Table'
 import '../global.css'
-import ZooProvider from '../context/zooContext'
+import AnimalProvider from '../context/AnimalContext'
 
 
 const App = () => {
 
   return (
-    <ZooProvider>
+    <AnimalProvider>
     <div className='app-container'>
     <Form />
     <Table/>
     </div>
-    </ZooProvider>
+    </AnimalProvider>
   )
 }
 

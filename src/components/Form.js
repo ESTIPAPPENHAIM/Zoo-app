@@ -1,40 +1,32 @@
 import React, {useState} from 'react'
-import Select from './Select'
-import { useAddAnimalContext } from '../context/zooContext';
-
+import { useAnimalsContext } from '../context/AnimalContext';
+import { newAnimal } from '../constant/animal';
+import { ANIMAL_TYPE } from '../constant/animal';
 
 
 const Form = () => {
 
-  const addAnimalToAnimalList = useAddAnimalContext();
+  const {addAnimalToAnimalList} = useAnimalsContext();
 
  
-
-  const [animal, setAnimal] = useState({ 
-      name: "",
-      type: '',
-      age: 0,
-      imageSrc: "",
-  });
+  const [formValuse, setFormValuse] = useState(
+    newAnimal
+    );
 
 
-  const handelAnimalNameChange = (event) =>{
-    setAnimal({...animal, name: event.target.value});
-   }
-   const handelAnimalImageSrcChange = (event) =>{
-    setAnimal({...animal, imageSrc: event.target.value});
-   }
-   const handelAnimalAgeChange = (event) =>{
-    setAnimal({...animal, age: event.target.value});
-   }
-   const handelAnimalTypeChange = (event) =>{
-    setAnimal({...animal, type: event.target.value});
-   }
+   const handleChange = (event) =>{
+    console.log(event.target.value)
+    setFormValuse((prevValues) =>({
+      ...prevValues,
+     [event.target.name]: event.target.value,
+  }));
+  };
+  
 
    const addAnimal = (event) => {
     event.preventDefault(); 
-    addAnimalToAnimalList(animal);
-    setAnimal({name: "", type: "", age: 0, imageSrc: "",})
+    addAnimalToAnimalList(formValuse);
+    setFormValuse(newAnimal)
 
    }
 
@@ -42,12 +34,39 @@ const Form = () => {
   return (
     <form onSubmit={addAnimal} className='form-container'>
       <div>
-     <input value={animal.name} onChange={handelAnimalNameChange} type='text' placeholder='Enter Animal Name'/>
-     <input value={animal.imageSrc} onChange={handelAnimalImageSrcChange} type='text' placeholder='Enter Image src'/>
-     <input value={animal.age} onChange={handelAnimalAgeChange} type='number' min={0}/>
+     <input
+      value={formValuse["name"]}
+       name='name'
+       onChange={handleChange}
+       type='text' 
+       placeholder='Enter Animal Name'/>
+
+     <input 
+     value={formValuse["imageSrc"]} 
+     name='imageSrc' 
+     onChange={handleChange} 
+     type='text' 
+     placeholder='Enter Image src'/>
+
+     <input 
+     value={formValuse["age"]} 
+     name='age' 
+     onChange={handleChange} 
+     type='number' 
+     min={0}/>
      </div>
+
      <div>
-     <Select handelAnimalTypeChange={handelAnimalTypeChange}/>
+     <select 
+      onChange={handleChange}
+      name='type' 
+      value={formValuse["type"]}>
+      {ANIMAL_TYPE.map((option, i) =>(
+        <option key={i} value={option.value}>
+          {option.type}
+          </option>
+      ))}
+     </select>
      <button type='submit'>Add</button>
      </div>
      <span>add animal to the zoo</span>

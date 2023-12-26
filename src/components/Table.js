@@ -1,11 +1,7 @@
 import React from 'react'
 import Animal from './Animal'
-import { useViaAnimalContext, useDeleteAnimalContext } from '../context/zooContext'
 
 const Table = () => {
-
-  const animal = useViaAnimalContext();
-  const deleteAnimal = useDeleteAnimalContext();
 
   return (
     <div className='table-container'>
